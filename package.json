@@ -1,0 +1,30 @@
+{
+  "name": "electron-pug-printer",
+  "version": "1.0.0",
+  "description": "prints pug inside electron with returning a promise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \":I i was lazy\" && exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdellaui/electron-pug-printer.git"
+  },
+  "keywords": [
+    "electron",
+    "pug",
+    "print",
+    "promise",
+    "printer"
+  ],
+  "author": "abdullah sahin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdellaui/electron-pug-printer/issues"
+  },
+  "homepage": "https://github.com/abdellaui/electron-pug-printer#readme",
+  "devDependencies": {
+    "electron": "^3.0.0",
+    "pug": "^2.0.3"
+  }
+}
