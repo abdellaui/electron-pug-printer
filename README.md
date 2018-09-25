@@ -8,13 +8,13 @@ if you are **not** using `silent mode` promise will never resolve on cancelling 
 
 ```javascript
 interface PugConfig {
-    filePath: string;
-    locals: Object;
+    filePath?: string;
+    locals?: Object | any;
 };
 
 interface Options {
-    pugOptions: PugConfig;
-    printOptions: Electron.PrintOptions | Electron.PrintToPDFOptions;
+    pugOptions?: PugConfig;
+    printOptions?: Electron.PrintOptions | Electron.PrintToPDFOptions;
 };
 
 /*
@@ -30,8 +30,8 @@ function printPug(option: Options): Promise<void>;
 
 ## example
 ```javascript
-const { app } from 'electron';
-const { printPug, printPugToPdf } from 'electron-pug-printer';
+const { app } = require('electron');
+const { printPug, printPugToPdf } = require('electron-pug-printer');
 
 app.on('ready', ()=>{
 
@@ -73,7 +73,7 @@ app.on('ready', ()=>{
         */
        console.log(data);
     }).catch(error => {
-        console.log('printPug', error);
+        console.log('printPugToPdf', error);
     });
     
 

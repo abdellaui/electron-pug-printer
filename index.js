@@ -22,9 +22,12 @@ const printPugToPdf = async (options) => {
 
 
 const internPrint = (toPdf, options) => {
-    const pugFile = options.pugOptions.filePath || 'template.pug';
-    const pugLocals = options.pugOptions.locals || {};
-    const printOption = options.printOptions || {};
+
+    const _pugOptions = options.pugOptions || {};
+    const _printOptions = options.printOptions || {};
+    const pugFile = _pugOptions.filePath || (__dirname + '/template.pug');
+    const pugLocals = _pugOptions.locals || {};
+    const printOption = _printOptions || {};
 
     return new Promise((resolve, reject) => {
         // if (!app.isReady()) reject({ errorDescription: 'electron app is not ready!' });
