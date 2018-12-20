@@ -2,11 +2,11 @@ declare module "electron-pug-printer" {
     export interface Options {
         pugOptions?: PugConfig;
         printOptions?: Electron.PrintOptions | Electron.PrintToPDFOptions;
-    };
+    }
     export interface PugConfig {
         filePath?: string;
         locals?: Object;
-    };
+    }
 
     /**
      * prints pug to pdf by given `pugOptions.filePath` with `pugOptions.locals`
