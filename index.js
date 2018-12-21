@@ -10,7 +10,6 @@ const pug = require('pug');
 const printPug = async (options) => {
     return await internPrint(false, options);
 }
-printPug
 /**
  * prints pug to pdf by given `pugOptions.filePath` with `pugOptions.locals`
  * @param {Object} options `{pugOptions: {filePath: string, locals: string}, printOptions?: Electron.PrintToPDFOptions}`
@@ -20,20 +19,23 @@ const printPugToPdf = async (options) => {
     return await internPrint(true, options);
 }
 
+const fromPugToHtml = (filePath, locals) => {
+    const pugFile = filePath || (__dirname + '/template.pug');
+    const pugLocals = locals || {};
+    return pug.renderFile(pugFile, pugLocals);
+}
 
 const internPrint = (toPdf, options) => {
 
     const _pugOptions = options.pugOptions || {};
     const _printOptions = options.printOptions || {};
-    const pugFile = _pugOptions.filePath || (__dirname + '/template.pug');
-    const pugLocals = _pugOptions.locals || {};
     const printOption = _printOptions || {};
 
     return new Promise((resolve, reject) => {
         // if (!app.isReady()) reject({ errorDescription: 'electron app is not ready!' });
         try {
 
-            const html = pug.renderFile(pugFile, pugLocals);
+            const html = fromPugToHtml(_pugOptions.filePath, _pugOptions.locals);
             let file = 'data:text/html;charset=UTF-8,' + encodeURIComponent(html);
             let backgroundWindow = new BrowserWindow({ show: false });
             backgroundWindow.loadURL(file);
@@ -84,5 +86,6 @@ const internPrint = (toPdf, options) => {
 
 module.exports = {
     printPug,
-    printPugToPdf
+    printPugToPdf,
+    fromPugToHtml
 }
