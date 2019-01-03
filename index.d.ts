@@ -20,4 +20,6 @@ declare module "electron-pug-printer" {
      * @returns {Promise} returns Promise<void> 
      */
     export function printPug(option: Options);
+
+    export function fromPugToHtml(filePath: string, locals: Object);
 }
