@@ -1,6 +1,6 @@
 {
   "name": "electron-pug-printer",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "prints pug inside electron with returning a promise",
   "main": "index.js",
   "scripts": {
