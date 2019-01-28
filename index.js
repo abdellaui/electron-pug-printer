@@ -47,9 +47,11 @@ const internPrint = (toPdf, options) => {
                         if (success) {
                             resolve();
                             backgroundWindow.close();
+                            backgroundWindow = null;
                         } else {
                             reject({ errorDescription: 'could not print!' });
                             backgroundWindow.close();
+                            backgroundWindow = null;
                         }
                     });
                 } else {
@@ -57,20 +59,18 @@ const internPrint = (toPdf, options) => {
                         if (error) reject({ errorDescription: error });
                         resolve(data);
                         backgroundWindow.close();
+                        backgroundWindow = null;
                     });
                 }
 
             });
 
 
-            backgroundWindow.once('closed', () => {
-                reject({ errorDescription: 'could not print!' });
-                backgroundWindow = null;
-            });
 
             backgroundWindow.webContents.once('did-fail-load', (event, _errorCode, _errorDescription) => {
                 reject({ errorDescription: _errorDescription });
                 backgroundWindow.close();
+                backgroundWindow = null;
             });
 
 
